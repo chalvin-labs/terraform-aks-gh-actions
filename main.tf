@@ -14,6 +14,6 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "pipeline-example"
+  name     = "pipeline-test"
   location = "eastus"
 }
