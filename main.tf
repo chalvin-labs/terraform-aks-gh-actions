@@ -37,8 +37,8 @@ resource "azurerm_container_group" "aci" {
   name                = "pipeline-example-backend"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
-  ip_address_type     = "public"
-  dns_name_label      = "aci-label"
+  ip_address_type     = "private"
+  dns_name_label      = "pipeline-example-backend"
   os_type             = "Linux"
 
   container {
