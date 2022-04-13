@@ -28,4 +28,4 @@ jobs:
 
       - name: Init
         run: |
-          terraform validate
+          terraform init
