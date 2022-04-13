@@ -6,6 +6,13 @@ terraform {
     }
   }
 
+  cloud {
+    organization = "chalvinco"
+    workspaces {
+      name = "pipeline-example"
+    }
+  }
+
   required_version = ">= 1.1.0"
 }
 
