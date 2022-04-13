@@ -24,3 +24,11 @@ resource "azurerm_resource_group" "rg" {
   name     = "mypipeline"
   location = "eastus"
 }
+
+resource "azurerm_container_registry" "acr" {
+  name                = "pipeline"
+  resource_group_name = azurerm_resource_group.rg.mypipeline
+  location            = azurerm_resource_group.rg.eastus
+  sku                 = "Standard"
+  admin_enabled       = true
+}
