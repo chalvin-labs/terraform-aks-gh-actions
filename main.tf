@@ -21,12 +21,12 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "mypipeline"
+  name     = "pipeline-example"
   location = "eastus"
 }
 
 resource "azurerm_container_registry" "acr" {
-  name                = "mypipelineexample"
+  name                = "pipelinexample"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   sku                 = "Standard"
