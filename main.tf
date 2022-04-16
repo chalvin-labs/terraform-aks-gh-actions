@@ -20,17 +20,9 @@ provider "azurerm" {
   features {}
 }
 
-# variable "acr_username" {
-#   description = "acr username"
-# }
-
-# variable "acr_token" {
-#   description = "acr token"
-# }
-
-# variable "acr_server" {
-#   description = "acr server"
-# }
+variable "k8s_version" {
+  description = "k8s version"
+}
 
 resource "azurerm_resource_group" "rg" {
   name     = "pipeline-example"
@@ -50,7 +42,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   dns_prefix          = "pipeline-example-cluster"
-  kubernetes_version  = "1.21.9"
+  kubernetes_version  = var.k8s_version
 
   default_node_pool {
     name       = "default"
@@ -60,26 +52,5 @@ resource "azurerm_kubernetes_cluster" "aks" {
 
   identity {
     type = "SystemAssigned"
-  }
-}
-
-resource "azurerm_container_group" "aci" {
-  name                = "pipeline-example-backend"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-  ip_address_type     = "Public"
-  dns_name_label      = "pipeline-example-backend"
-  os_type             = "Linux"
-
-  container {
-    name   = "pipeline-example-backend"
-    image  = "chalvinwz/pipeline-example-backend"
-    cpu    = "0.5"
-    memory = "1.5"
-
-    ports {
-      port     = 80
-      protocol = "TCP"
-    }
   }
 }
