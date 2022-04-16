@@ -2,7 +2,7 @@ name: Terraform Apply
 
 on:
   push:
-    branches: [master]
+    branches: [dev, master]
 
 env:
   ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
