@@ -1,9 +1,9 @@
 name: CI
 
 on:
-  workflow_run:
-    workflows: ['Deploy Staging']
-    types: [completed]
+  push:
+    branches: [dev]
+  pull_request:
     branches: [master]
 
 env:
@@ -33,5 +33,5 @@ jobs:
       - name: Init
         run: terraform init
 
-      - name: Apply
-        run: terraform apply -auto-approve
+      - name: Plan
+        run: terraform plan

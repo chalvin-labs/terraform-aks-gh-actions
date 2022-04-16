@@ -50,3 +50,42 @@ resource "azurerm_kubernetes_cluster" "aks" {
     type = "SystemAssigned"
   }
 }
+
+variable "acr_username" {
+  description = "acr username"
+}
+
+variable "acr_token" {
+  description = "acr token"
+}
+
+variable "acr_server" {
+  description = "acr server"
+}
+
+resource "azurerm_container_group" "aci-backend" {
+  name                = "pipeline-example-backend"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  ip_address_type     = "Public"
+  dns_name_label      = "pipeline-example-backend"
+  os_type             = "Linux"
+
+  container {
+    name   = "pipeline-example-backend"
+    image  = "mcr.microsoft.com/pipelinexample/pipeline-example-backend"
+    cpu    = "0.5"
+    memory = "1.5"
+
+    ports {
+      port     = 80
+      protocol = "TCP"
+    }
+  }
+
+  image_registry_credential {
+    username  = var.acr_username
+    password  = var.acr_token
+    server    = var.acr_server
+  }
+}
