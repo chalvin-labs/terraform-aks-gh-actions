@@ -20,9 +20,9 @@ provider "azurerm" {
   features {}
 }
 
-variable "k8s_version" {
-  description = "k8s version"
-}
+# variable "k8s_version" {
+#   description = "k8s version"
+# }
 
 resource "azurerm_resource_group" "rg" {
   name     = "pipeline-example"
@@ -42,7 +42,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   dns_prefix          = "pipeline-example-cluster"
-  kubernetes_version  = var.k8s_version
+  kubernetes_version  = "1.21.9"
 
   default_node_pool {
     name       = "default"
