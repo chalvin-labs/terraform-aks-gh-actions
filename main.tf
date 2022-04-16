@@ -63,7 +63,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
 }
 
-resource "azurerm_container_group" "aci-backend" {
+resource "azurerm_container_group" "aci" {
   name                = "pipeline-example-backend"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
@@ -73,7 +73,7 @@ resource "azurerm_container_group" "aci-backend" {
 
   container {
     name   = "pipeline-example-backend"
-    image  = "mcr.microsoft.com/pipelinexample/pipeline-example-backend"
+    image  = "pipelinexample.azurecr.io/pipelinexample/pipeline-example-backend"
     cpu    = "0.5"
     memory = "1.5"
 
