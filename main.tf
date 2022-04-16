@@ -73,7 +73,7 @@ resource "azurerm_container_group" "aci" {
 
   container {
     name   = "pipeline-example-backend"
-    image  = "pipelinexample.azurecr.io/pipelinexample/pipeline-example-backend:eced8a8c701739bdcd4f908fe7db2cf789bfc966"
+    image  = "chalvinwz/pipeline-example-backend"
     cpu    = "0.5"
     memory = "1.5"
 
@@ -81,17 +81,5 @@ resource "azurerm_container_group" "aci" {
       port     = 80
       protocol = "TCP"
     }
-  }
-
-  # image_registry_credential {
-  #   username  = var.acr_username
-  #   password  = var.acr_token
-  #   server    = var.acr_server
-  # }
-
-  image_registry_credential {
-    username  = "pipelinexample"
-    password  = "71MkN4H+6dTUOZAft4Q+Zj+CRIblyveW"
-    server    = "pipelinexample.azurecr.io"
   }
 }
