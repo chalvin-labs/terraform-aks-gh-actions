@@ -51,17 +51,17 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
 }
 
-variable "acr_username" {
-  description = "acr username"
-}
+# variable "acr_username" {
+#   description = "acr username"
+# }
 
-variable "acr_token" {
-  description = "acr token"
-}
+# variable "acr_token" {
+#   description = "acr token"
+# }
 
-variable "acr_server" {
-  description = "acr server"
-}
+# variable "acr_server" {
+#   description = "acr server"
+# }
 
 resource "azurerm_container_group" "aci-backend" {
   name                = "pipeline-example-backend"
@@ -84,8 +84,8 @@ resource "azurerm_container_group" "aci-backend" {
   }
 
   image_registry_credential {
-    username  = var.acr_username
-    password  = var.acr_token
-    server    = var.acr_server
+    username  = "pipelinexample"
+    password  = "71MkN4H+6dTUOZAft4Q+Zj+CRIblyveW"
+    server    = "pipelinexample.azurecr.io"
   }
 }
