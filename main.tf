@@ -73,7 +73,7 @@ resource "azurerm_container_group" "aci" {
 
   container {
     name   = "pipeline-example-backend"
-    image  = "pipelinexample.azurecr.io/pipelinexample/pipeline-example-backend"
+    image  = "pipelinexample.azurecr.io/pipelinexample/pipeline-example-backend:eced8a8c701739bdcd4f908fe7db2cf789bfc966"
     cpu    = "0.5"
     memory = "1.5"
 
