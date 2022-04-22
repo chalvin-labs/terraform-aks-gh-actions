@@ -2,7 +2,7 @@ name: Terraform Apply
 
 on:
   push:
-    branches: [master]
+    branches: [destroy]
 
 env:
   ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
@@ -31,5 +31,5 @@ jobs:
       - name: Init
         run: terraform init
 
-      - name: Apply
-        run: terraform apply -auto-approve
+      - name: Destroy
+        run: terraform destroy -auto-approve
