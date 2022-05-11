@@ -20,10 +20,6 @@ provider "azurerm" {
   features {}
 }
 
-# variable "k8s_version" {
-#   description = "k8s version"
-# }
-
 resource "azurerm_resource_group" "rg" {
   name     = "pipeline-example"
   location = "eastus"
