@@ -31,5 +31,8 @@ jobs:
       - name: Init
         run: terraform init
 
+      - name: Import resource group
+        run: terraform import azurerm_resource_group.rg /subscriptions/be2c1aaf-3b7d-4e6b-a58a-db3aa692a7f0/resourceGroups/pipeline-example
+
       - name: Apply
         run: terraform apply -auto-approve
