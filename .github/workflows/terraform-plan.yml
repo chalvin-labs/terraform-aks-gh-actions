@@ -3,8 +3,6 @@ name: Terraform Plan
 on:
   push:
     branches: [dev]
-  pull_request:
-    branches: [master]
 
 env:
   ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
